@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, SHADOWS, SIZES, assets } from '../constants';
 import { CircleButton } from './Button';
+import { SubInfo } from './Subinfo';
 
 type Bid = {
     id: string;
@@ -42,6 +43,7 @@ const NFTCard: FC<NFTCardProps> = ({ data }) => {
           handlePress={() =>{}}        
         />
       </View>
+      <SubInfo/>
     </View>
   )
 }
