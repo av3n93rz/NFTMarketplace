@@ -3,6 +3,12 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import Home from './screens/Home';
 import Details from './screens/Details';
+import { NFTData } from './components/NFTCard';
+
+export type RootStackParamList = {
+  Home: undefined;
+  Details: { data: NFTData };
+};
 
 const App = () => {
   const [loaded] = useFonts({
@@ -15,7 +21,7 @@ const App = () => {
 
   if(!loaded) return null;
 
-  const Stack = createStackNavigator();
+  const Stack = createStackNavigator<RootStackParamList>();
 
   const theme = {
     ...DefaultTheme,

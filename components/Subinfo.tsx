@@ -2,18 +2,55 @@ import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native
 import React, { FC } from 'react'
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from '../constants'
 
-export const NFTTitle = () => {
+type NFTTitleProps = {
+	title: string;
+	subTitle: string;
+	titleSize: number;
+	subTitleSize: number;
+}
+
+export const NFTTitle: FC<NFTTitleProps> = ({ title, subTitle, titleSize, subTitleSize }) => {
   return (
-    <View>
-      <Text>Subinfo</Text>
+    <View style={{}}>
+      <Text style={{
+				fontFamily: FONTS.semiBold,
+				fontSize: titleSize,
+				color: COLORS.primary
+			}}>
+				{title}
+			</Text>
+      <Text style={{
+				fontFamily: FONTS.regular,
+				fontSize: subTitleSize,
+				color: COLORS.primary
+			}}>
+				{subTitle}
+			</Text>
     </View>
   )
 }
 
-export const EthPrice = () => {
+type EthPriceProps = {
+	price: number;
+}
+
+export const EthPrice: FC<EthPriceProps> = ({ price }) => {
     return (
-      <View>
-        <Text>Subinfo</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+        <Image 
+					source={assets.eth}
+					resizeMode='contain'
+					style={{
+						width: 20,
+						height: 20,
+						marginRight: 2
+					}}
+				/>
+				<Text style={{
+					fontFamily: FONTS.medium,
+					fontSize: SIZES.font,
+					color: COLORS.primary
+				}}>{price}</Text>
       </View>
     )
   }

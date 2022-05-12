@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, ImageSourcePropType } from 'react-native'
 import React, { FC } from 'react'
-import { COLORS, SHADOWS, SIZES } from '../constants'
+import { COLORS, FONTS, SHADOWS, SIZES } from '../constants'
 
 type CircleButtonProps = {
   imgUrl: ImageSourcePropType;
-  handlePress: () => void;
-  right: number;
-  top: number;
+  handlePress?: () => void;
+  right?: number;
+  top?: number;
+  left?: number;
 }
 
 export const CircleButton: FC<CircleButtonProps> = ({imgUrl, handlePress, ...props}) => {
@@ -37,10 +38,34 @@ export const CircleButton: FC<CircleButtonProps> = ({imgUrl, handlePress, ...pro
   )
 }
 
-export const RectButton = () => {
+type PartialShadowType = Partial<typeof SHADOWS.dark>
+
+type RectButtonProps = {
+  handlePress?: () => void;
+  fontSize: number;
+  minWidth: number;
+}
+
+export const RectButton: FC<RectButtonProps & PartialShadowType> = ({ minWidth, fontSize, handlePress, ...props }) => {
   return (
-    <View>
-      <Text>CircleButton</Text>
-    </View>
+    <TouchableOpacity
+      style={{
+        backgroundColor: COLORS.primary,
+        borderRadius: SIZES.extraLarge,
+        minWidth: minWidth,
+        padding: SIZES.small,
+        ...props
+      }}
+      onPress={handlePress}
+    >
+      <Text style={{
+        fontFamily: FONTS.semiBold,
+        fontSize: fontSize,
+        color: COLORS.white,
+        textAlign: 'center'
+      }}>
+        Place a bid
+      </Text>
+    </TouchableOpacity>
   )
 }

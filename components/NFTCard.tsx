@@ -2,10 +2,12 @@ import { StyleSheet, Image, View, ImageSourcePropType } from 'react-native'
 import React, { FC } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, SHADOWS, SIZES, assets } from '../constants';
-import { CircleButton } from './Button';
-import { SubInfo } from './Subinfo';
+import { CircleButton, RectButton } from './Button';
+import { EthPrice, NFTTitle, SubInfo } from './Subinfo';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../App';
 
-type Bid = {
+export type Bid = {
     id: string;
     name: string;
     price: number;
@@ -13,20 +15,24 @@ type Bid = {
     date: string;
 }
 
-type NFTCardProps = {
-  data: {
-    id: string;
-    name: string;
-    creator: string;
-    price: number;
-    description: string;
-    image: ImageSourcePropType;
-    bids: Bid[];
-  }
+export type NFTData = {
+  id: string;
+  name: string;
+  creator: string;
+  price: number;
+  description: string;
+  image: ImageSourcePropType;
+  bids: Bid[];
 }
 
+type NFTCardProps = {
+  data: NFTData
+}
+
+type HomeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
+
 const NFTCard: FC<NFTCardProps> = ({ data }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenProp>();
 
   return (
     <View style={styles.card}>
@@ -44,6 +50,27 @@ const NFTCard: FC<NFTCardProps> = ({ data }) => {
         />
       </View>
       <SubInfo/>
+      <View style={{ width: '100%', padding: SIZES.font }}>
+        <NFTTitle 
+          title={data.name}
+          subTitle={data.creator}
+          titleSize={SIZES.large}
+          subTitleSize={SIZES.small}
+        />
+        <View style={{
+          marginTop: SIZES.font,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <EthPrice price={data.price}/>
+          <RectButton
+            minWidth={120}
+            fontSize={SIZES.font}
+            handlePress={() => navigation.navigate('Details', { data })}
+          />
+        </View>
+      </View>
     </View>
   )
 }

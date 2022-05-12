@@ -1,9 +1,11 @@
-import { StyleSheet, StatusBar } from 'react-native'
+import { StyleSheet, StatusBar, StatusBarStyle } from 'react-native'
 import { useIsFocused } from '@react-navigation/core'
 import React, { FC } from 'react'
 
 type FocusedStatusBarProps = {
-  background: string
+  background?: string;
+  translucent?: boolean;
+  barStyle?: StatusBarStyle;
 }
 
 const FocusedStatusBar: FC<FocusedStatusBarProps> = (props) => {
