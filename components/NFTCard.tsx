@@ -2,10 +2,11 @@ import { StyleSheet, Image, View, ImageSourcePropType } from 'react-native'
 import React, { FC } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, SHADOWS, SIZES, assets } from '../constants';
-import { CircleButton, RectButton } from './Button';
+import { CircleButton } from './CircleButton';
 import { EthPrice, NFTTitle, SubInfo } from './Subinfo';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../App';
+import { RectButton } from './RectButton';
 
 export type Bid = {
     id: string;

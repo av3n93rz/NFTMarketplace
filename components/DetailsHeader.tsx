@@ -1,6 +1,6 @@
 import { Image, ImageSourcePropType, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
-import { CircleButton } from './Button';
+import { CircleButton } from './CircleButton';
 import { assets } from '../constants';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../App';
