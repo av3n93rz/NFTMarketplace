@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2017"],
+    "noEmit": true,
+    "baseUrl": ".",
+  },
+  "references": [
+    {
+      "path": "./tsconfig.json"
+    },
+  ],
+}

@@ -1,12 +1,12 @@
-import FocusedStatusBar from "./FocusedStatusBar";
-import HomeHeader from "./HomeHeader";
-import NFTCard from "./NFTCard";
-import { CircleButton } from "./CircleButton";
-import { RectButton } from "./RectButton";
-import DetailsDesc from "./DetailsDesc";
-import DetailsBid from "./DetailsBid";
-import DetailsHeader from "./DetailsHeader";
-import { SubInfo } from "./Subinfo";
+import { FocusedStatusBar } from './FocusedStatusBar';
+import { HomeHeader } from './HomeHeader';
+import { NFTCard } from './NFTCard';
+import { CircleButton } from './CircleButton';
+import { RectButton } from './RectButton';
+import { DetailsDesc } from './DetailsDesc';
+import { DetailsBid } from './DetailsBid';
+import { DetailsHeader } from './DetailsHeader';
+import { SubInfo } from './Subinfo';
 
 export {
   HomeHeader,
@@ -17,5 +17,5 @@ export {
   DetailsDesc,
   DetailsBid,
   DetailsHeader,
-  SubInfo
-}
+  SubInfo,
+};

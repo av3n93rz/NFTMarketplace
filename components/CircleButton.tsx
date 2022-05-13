@@ -1,29 +1,27 @@
-import { StyleSheet, ViewStyle, TouchableOpacity, Image, ImageStyle, ImageSourcePropType } from 'react-native'
-import React, { FC } from 'react'
-import { COLORS, SHADOWS, SIZES } from '../constants'
+import type { ViewStyle, ImageStyle, ImageSourcePropType } from 'react-native';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import type { FC } from 'react';
+import React from 'react';
+import { COLORS, SHADOWS, SIZES } from '../constants';
 
 type CircleButtonProps = {
   imgUrl: ImageSourcePropType;
   handlePress?: () => void;
-} & Pick<ViewStyle, 'top' | 'left' | 'right'>
+} & Pick<ViewStyle, 'top' | 'left' | 'right'>;
 
-export const CircleButton: FC<CircleButtonProps> = ({imgUrl, handlePress, ...props}) => {
+export const CircleButton: FC<CircleButtonProps> = ({ imgUrl, handlePress, ...props }) => {
   return (
     <TouchableOpacity
       style={{
         ...styles.button,
-        ...props
+        ...props,
       }}
       onPress={handlePress}
     >
-      <Image
-        source={imgUrl}
-        resizeMode='contain'
-        style={styles.image}
-      />
+      <Image source={imgUrl} resizeMode="contain" style={styles.image} />
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 interface Style {
   button: ViewStyle;
@@ -44,5 +42,5 @@ const styles = StyleSheet.create<Style>({
   image: {
     width: 24,
     height: 24,
-  }
-})
+  },
+});

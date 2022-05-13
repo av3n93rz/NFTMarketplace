@@ -1,47 +1,46 @@
-import React, { useState } from 'react'
+import type { FC } from 'react';
+import React, { useState } from 'react';
 import { View, SafeAreaView, FlatList, StyleSheet } from 'react-native';
-import { COLORS, NFTData } from '../constants'
+import { COLORS, NFTData } from '../constants';
 import { NFTCard, HomeHeader, FocusedStatusBar } from '../components';
 
-const Home = () => {
-  const [nftData, setNftData] = useState(NFTData)
+export const Home: FC = () => {
+  const [nftData, setNftData] = useState(NFTData);
 
-  const handleSearch = (value: string) => {
-    if(!value.length) {
-      return setNftData(NFTData)
+  const handleSearch = (value: string): void => {
+    if (!value.length) {
+      return setNftData(NFTData);
     }
     const filteredData = NFTData.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
-    
-    if(filteredData.length) {
-      setNftData(filteredData)
+
+    if (filteredData.length) {
+      setNftData(filteredData);
     } else {
-      setNftData(NFTData)
+      setNftData(NFTData);
     }
-  }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar background={COLORS.primary}/>
+      <FocusedStatusBar background={COLORS.primary} />
       <View style={{ flex: 1 }}>
         <View style={{ zIndex: 0 }}>
           <FlatList
             data={nftData}
-            renderItem={({ item }) => <NFTCard data={item}/>}
+            renderItem={({ item }) => <NFTCard data={item} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<HomeHeader onSearch={handleSearch}/>}
+            ListHeaderComponent={<HomeHeader onSearch={handleSearch} />}
           />
         </View>
         <View style={styles.background}>
-          <View style={{ height: 300, backgroundColor: COLORS.primary }}/>
-          <View style={{ flex: 1, backgroundColor: COLORS.white }}/>
+          <View style={{ height: 300, backgroundColor: COLORS.primary }} />
+          <View style={{ flex: 1, backgroundColor: COLORS.white }} />
         </View>
       </View>
     </SafeAreaView>
-  )
-}
-
-export default Home
+  );
+};
 
 const styles = StyleSheet.create({
   background: {
@@ -50,6 +49,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    zIndex: -1
-  }
-})
+    zIndex: -1,
+  },
+});

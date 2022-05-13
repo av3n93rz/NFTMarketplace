@@ -1,51 +1,59 @@
-import { StyleSheet, Text, View, Image, TextInput } from 'react-native'
-import { COLORS, FONTS, SIZES, assets } from '../constants'
-import React, { FC } from 'react'
+import type { ImageSourcePropType } from 'react-native';
+import { Text, View, Image, TextInput } from 'react-native';
+import type { FC } from 'react';
+import React from 'react';
+import { COLORS, FONTS, SIZES, assets } from '../constants';
 
 type HomeHeaderProps = {
   onSearch: (value: string) => void;
-}
+};
 
-const HomeHeader: FC<HomeHeaderProps> = ({ onSearch }) => {
+export const HomeHeader: FC<HomeHeaderProps> = ({ onSearch }) => {
   return (
-    <View style={{
-      backgroundColor: COLORS.primary,
-      padding: SIZES.font
-    }}>
-      <View style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
+    <View
+      style={{
+        backgroundColor: COLORS.primary,
+        padding: SIZES.font,
+      }}
+    >
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
         <Image
-          source={assets.logo}
-          resizeMode='contain'
+          source={assets.logo as ImageSourcePropType}
+          resizeMode="contain"
           style={{
             width: 90,
             height: 25,
           }}
         />
-        <View style={{
-          width: 45,
-          height: 45,
-        }}>
+        <View
+          style={{
+            width: 45,
+            height: 45,
+          }}
+        >
           <Image
-            source={assets.person01}
-            resizeMode='contain'
+            source={assets.person01 as ImageSourcePropType}
+            resizeMode="contain"
             style={{
               width: '100%',
               height: '100%',
             }}
           />
           <Image
-            source={assets.badge}
-            resizeMode='contain'
+            source={assets.badge as ImageSourcePropType}
+            resizeMode="contain"
             style={{
               position: 'absolute',
               width: 15,
               height: 15,
               bottom: 0,
-              right: 0
+              right: 0,
             }}
           />
         </View>
@@ -59,26 +67,28 @@ const HomeHeader: FC<HomeHeaderProps> = ({ onSearch }) => {
         </Text>
       </View>
       <View style={{ marginTop: SIZES.font }}>
-        <View style={{
-          width: '100%',
-          borderRadius: SIZES.font,
-          backgroundColor: COLORS.gray,
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingHorizontal: SIZES.font,
-          paddingVertical: SIZES.small - 2
-        }}>
+        <View
+          style={{
+            width: '100%',
+            borderRadius: SIZES.font,
+            backgroundColor: COLORS.gray,
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingHorizontal: SIZES.font,
+            paddingVertical: SIZES.small - 2,
+          }}
+        >
           <Image
-            source={assets.search}
-            resizeMode='contain'
+            source={assets.search as ImageSourcePropType}
+            resizeMode="contain"
             style={{
               width: 20,
               height: 20,
-              marginRight: SIZES.base
+              marginRight: SIZES.base,
             }}
           />
           <TextInput
-            placeholder='Search NFTs'
+            placeholder="Search NFTs"
             style={{
               flex: 1,
             }}
@@ -87,7 +97,5 @@ const HomeHeader: FC<HomeHeaderProps> = ({ onSearch }) => {
         </View>
       </View>
     </View>
-  )
-}
-
-export default HomeHeader
+  );
+};

@@ -1,43 +1,45 @@
-import { Image, ImageSourcePropType, StatusBar, StyleSheet, Text, View } from 'react-native'
-import React, { FC } from 'react'
-import { CircleButton } from './CircleButton';
+import type { ImageSourcePropType } from 'react-native';
+import { Image, StatusBar, View } from 'react-native';
+import type { FC } from 'react';
+import React from 'react';
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { assets } from '../constants';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../App';
-import { NFTData } from './NFTCard';
+import type { RootStackParamList } from '../App';
+import { CircleButton } from './CircleButton';
+import type { NFTData } from './NFTCard';
 
 type DetailsHeaderProps = {
   data: NFTData;
-  navigation: StackNavigationProp<RootStackParamList, 'Details'>
-}
+  navigation: StackNavigationProp<RootStackParamList, 'Details'>;
+};
 
-const DetailsHeader: FC<DetailsHeaderProps> = ({ data, navigation }) => {
+export const DetailsHeader: FC<DetailsHeaderProps> = ({ data, navigation }) => {
   return (
-    <View style={{
-      width: '100%',
-      height: 373
-    }}>
+    <View
+      style={{
+        width: '100%',
+        height: 373,
+      }}
+    >
       <Image
         source={data.image}
-        resizeMode='cover'
+        resizeMode="cover"
         style={{
           width: '100%',
           height: '100%',
         }}
       />
       <CircleButton
-        imgUrl={assets.left}
+        imgUrl={assets.left as ImageSourcePropType}
         handlePress={() => navigation.goBack()}
         left={15}
-        top={StatusBar.currentHeight ? StatusBar.currentHeight + 10: 10}
+        top={StatusBar.currentHeight ? StatusBar.currentHeight + 10 : 10}
       />
       <CircleButton
-        imgUrl={assets.heart}
+        imgUrl={assets.heart as ImageSourcePropType}
         right={15}
-        top={StatusBar.currentHeight ? StatusBar.currentHeight + 10: 10}
+        top={StatusBar.currentHeight ? StatusBar.currentHeight + 10 : 10}
       />
     </View>
-  )
-}
-
-export default DetailsHeader
+  );
+};

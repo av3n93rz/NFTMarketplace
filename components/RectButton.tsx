@@ -1,14 +1,16 @@
-import { StyleSheet, Text, View, ViewStyle, TouchableOpacity, Image, ImageSourcePropType } from 'react-native'
-import React, { FC } from 'react'
-import { COLORS, FONTS, SHADOWS, SIZES } from '../constants'
+import { Text, TouchableOpacity } from 'react-native';
+import type { FC } from 'react';
+import React from 'react';
+import type { SHADOWS } from '../constants';
+import { COLORS, FONTS, SIZES } from '../constants';
 
-type PartialShadowType = Partial<typeof SHADOWS.dark>
+type PartialShadowType = Partial<typeof SHADOWS.dark>;
 
 type RectButtonProps = {
   handlePress?: () => void;
   fontSize: number;
   minWidth: number;
-}
+};
 
 export const RectButton: FC<RectButtonProps & PartialShadowType> = ({ minWidth, fontSize, handlePress, ...props }) => {
   return (
@@ -18,18 +20,20 @@ export const RectButton: FC<RectButtonProps & PartialShadowType> = ({ minWidth, 
         borderRadius: SIZES.extraLarge,
         minWidth: minWidth,
         padding: SIZES.small,
-        ...props
+        ...props,
       }}
       onPress={handlePress}
     >
-      <Text style={{
-        fontFamily: FONTS.semiBold,
-        fontSize: fontSize,
-        color: COLORS.white,
-        textAlign: 'center'
-      }}>
+      <Text
+        style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: fontSize,
+          color: COLORS.white,
+          textAlign: 'center',
+        }}
+      >
         Place a bid
       </Text>
     </TouchableOpacity>
-  )
-}
+  );
+};

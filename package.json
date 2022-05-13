@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.10",
@@ -24,9 +25,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@codingsans/eslint-config": "^5.2.1",
+    "@ls-lint/ls-lint": "^1.11.0",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.66.13",
-    "typescript": "~4.3.5"
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.4"
   },
   "resolutions": {
     "@types/react": "~17.0.21"
