@@ -11,7 +11,7 @@ export type RootStackParamList = {
   Details: { data: NFTData };
 };
 
-export const App: FC = () => {
+const App: FC = () => {
   const [loaded] = useFonts({
     /* eslint-disable @typescript-eslint/no-unsafe-assignment */
     InterBold: require('./assets/fonts/Inter-Bold.ttf'),
@@ -45,3 +45,6 @@ export const App: FC = () => {
     </NavigationContainer>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default App;
