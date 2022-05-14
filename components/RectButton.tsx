@@ -1,4 +1,5 @@
-import { Text, TouchableOpacity } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import type { FC } from 'react';
 import React from 'react';
 import type { SHADOWS } from '../constants';
@@ -16,20 +17,16 @@ export const RectButton: FC<RectButtonProps & PartialShadowType> = ({ minWidth, 
   return (
     <TouchableOpacity
       style={{
-        backgroundColor: COLORS.primary,
-        borderRadius: SIZES.extraLarge,
         minWidth: minWidth,
-        padding: SIZES.small,
+        ...styles.button,
         ...props,
       }}
       onPress={handlePress}
     >
       <Text
         style={{
-          fontFamily: FONTS.semiBold,
           fontSize: fontSize,
-          color: COLORS.white,
-          textAlign: 'center',
+          ...styles.text,
         }}
       >
         Place a bid
@@ -37,3 +34,21 @@ export const RectButton: FC<RectButtonProps & PartialShadowType> = ({ minWidth, 
     </TouchableOpacity>
   );
 };
+
+interface Style {
+  button: ViewStyle;
+  text: TextStyle;
+}
+
+const styles = StyleSheet.create<Style>({
+  button: {
+    backgroundColor: COLORS.primary,
+    borderRadius: SIZES.extraLarge,
+    padding: SIZES.small,
+  },
+  text: {
+    fontFamily: FONTS.semiBold,
+    color: COLORS.white,
+    textAlign: 'center',
+  },
+});

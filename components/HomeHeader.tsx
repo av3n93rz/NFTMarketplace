@@ -1,5 +1,5 @@
-import type { ImageSourcePropType } from 'react-native';
-import { Text, View, Image, TextInput } from 'react-native';
+import type { ImageSourcePropType, ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import type { FC } from 'react';
 import React from 'react';
 import { COLORS, FONTS, SIZES, assets } from '../constants';
@@ -59,43 +59,58 @@ export const HomeHeader: FC<HomeHeaderProps> = ({ onSearch }) => {
         </View>
       </View>
       <View style={{ marginVertical: SIZES.font }}>
-        <Text style={{ fontFamily: FONTS.regular, fontSize: SIZES.small, color: COLORS.white }}>
-          Hello, Victoria 👋
-        </Text>
-        <Text style={{ fontFamily: FONTS.bold, fontSize: SIZES.large, color: COLORS.white, marginTop: SIZES.base / 2 }}>
-          Let's find a masterpiece
-        </Text>
+        <Text style={styles.welcome}>Hello, Victoria 👋</Text>
+        <Text style={styles.welcomeMessage}>Let's find a masterpiece</Text>
       </View>
-      <View style={{ marginTop: SIZES.font }}>
-        <View
-          style={{
-            width: '100%',
-            borderRadius: SIZES.font,
-            backgroundColor: COLORS.gray,
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingHorizontal: SIZES.font,
-            paddingVertical: SIZES.small - 2,
-          }}
-        >
-          <Image
-            source={assets.search as ImageSourcePropType}
-            resizeMode="contain"
-            style={{
-              width: 20,
-              height: 20,
-              marginRight: SIZES.base,
-            }}
-          />
-          <TextInput
-            placeholder="Search NFTs"
-            style={{
-              flex: 1,
-            }}
-            onChangeText={onSearch}
-          />
+      <View style={styles.searchContainer}>
+        <View style={styles.searchBar}>
+          <Image source={assets.search as ImageSourcePropType} resizeMode="contain" style={styles.searchIcon} />
+          <TextInput placeholder="Search NFTs" style={styles.searchInput} onChangeText={onSearch} />
         </View>
       </View>
     </View>
   );
 };
+
+interface Style {
+  welcome: TextStyle;
+  welcomeMessage: TextStyle;
+  searchContainer: ViewStyle;
+  searchBar: ViewStyle;
+  searchIcon: ImageStyle;
+  searchInput: TextStyle;
+}
+
+const styles = StyleSheet.create<Style>({
+  welcome: {
+    fontFamily: FONTS.regular,
+    fontSize: SIZES.small,
+    color: COLORS.white,
+  },
+  welcomeMessage: {
+    fontFamily: FONTS.bold,
+    fontSize: SIZES.large,
+    color: COLORS.white,
+    marginTop: SIZES.base / 2,
+  },
+  searchContainer: {
+    marginTop: SIZES.font,
+  },
+  searchBar: {
+    width: '100%',
+    borderRadius: SIZES.font,
+    backgroundColor: COLORS.gray,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: SIZES.font,
+    paddingVertical: SIZES.small - 2,
+  },
+  searchIcon: {
+    width: 20,
+    height: 20,
+    marginRight: SIZES.base,
+  },
+  searchInput: {
+    flex: 1,
+  },
+});

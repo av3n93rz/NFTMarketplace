@@ -1,4 +1,4 @@
-import type { ImageSourcePropType } from 'react-native';
+import type { ImageSourcePropType, ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { StyleSheet, Image, View } from 'react-native';
 import type { FC } from 'react';
 import React from 'react';
@@ -44,16 +44,9 @@ export const NFTCard: FC<NFTCardProps> = ({ data }) => {
         <CircleButton imgUrl={assets.heart as ImageSourcePropType} right={10} top={10} handlePress={() => null} />
       </View>
       <SubInfo />
-      <View style={{ width: '100%', padding: SIZES.font }}>
+      <View style={styles.bottomContainer}>
         <NFTTitle title={data.name} subTitle={data.creator} titleSize={SIZES.large} subTitleSize={SIZES.small} />
-        <View
-          style={{
-            marginTop: SIZES.font,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+        <View style={styles.bottomInnerContainer}>
           <EthPrice price={data.price} />
           <RectButton
             minWidth={120}
@@ -66,7 +59,15 @@ export const NFTCard: FC<NFTCardProps> = ({ data }) => {
   );
 };
 
-const styles = StyleSheet.create({
+interface Style {
+  card: ViewStyle;
+  inner: ViewStyle;
+  NFTImage: ImageStyle;
+  bottomContainer: ViewStyle;
+  bottomInnerContainer: ViewStyle;
+}
+
+const styles = StyleSheet.create<Style>({
   card: {
     backgroundColor: COLORS.white,
     borderRadius: SIZES.font,
@@ -83,5 +84,15 @@ const styles = StyleSheet.create({
     height: '100%',
     borderTopLeftRadius: SIZES.font,
     borderTopRightRadius: SIZES.font,
+  },
+  bottomContainer: {
+    width: '100%',
+    padding: SIZES.font,
+  },
+  bottomInnerContainer: {
+    marginTop: SIZES.font,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
